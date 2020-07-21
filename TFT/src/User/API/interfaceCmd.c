@@ -469,20 +469,20 @@ void sendQueueCmd(void)
 
         case 106: //M106
         {
-          u8 i = 0;
-          if(cmd_seen('P')) i = cmd_value();
-          if(cmd_seen('S'))
-          {
-            fanSetSpeed(i, cmd_value());
-          }
+            u8 i = 0;
+            if(cmd_seen('P')) i = cmd_value();
+            if(cmd_seen('S'))
+            {
+              fanSetSpeed(i, cmd_value());
+            }
           break;
         }
 
         case 107: //M107
         {
-          u8 i = 0;
-          if(cmd_seen('P')) i = cmd_value();
-          fanSetSpeed(i, 0);
+            u8 i = 0;
+            if(cmd_seen('P')) i = cmd_value();
+            fanSetSpeed(i, 0);
           break;
         }
 
