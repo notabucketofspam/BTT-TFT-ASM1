@@ -56,8 +56,8 @@ LABEL_BACKGROUND,
   {ICON_BACKGROUND,           LABEL_BACKGROUND},
   {ICON_BACKGROUND,           LABEL_BACKGROUND},
   {ICON_BACKGROUND,           LABEL_BACKGROUND},
-  {ICON_PAUSE,                LABEL_PAUSE},
   {ICON_BABYSTEP,             LABEL_BABYSTEP},
+  {ICON_PAUSE,                LABEL_PAUSE},
   {ICON_MORE,                 LABEL_MORE},
   {ICON_STOP,                 LABEL_STOP},}
 };
@@ -267,7 +267,7 @@ void reDrawProgress(int icon_pos)
 void reDrawLayer(int icon_pos)
 {
   char tempstr[10];
-  my_sprintf(tempstr, "%.2fMM",coordinateGetAxisTarget(Z_AXIS));
+  my_sprintf(tempstr, "%.2fmm",coordinateGetAxisTarget(Z_AXIS));
 
   GUI_SetTextMode(GUI_TEXTMODE_TRANS);
 
@@ -310,15 +310,14 @@ void toggleinfo(void)
 void printingDrawPage(void)
 {
   //  Scroll_CreatePara(&titleScroll, infoFile.title,&titleRect);  //
-  if(get_Pre_Icon() == true){
-    key_pause = 5;
-    //printingItems.items[key_pause - 1] = itemBlank;
+  key_pause = 5;
+  if(infoPrinting.model_icon){
     printingItems.items[key_pause - 1].icon = ICON_PREVIEW;
-    printingItems.items[key_pause - 1].label.index = LABEL_BACKGROUND;
+    printingItems.items[key_pause - 1].label.index = LABEL_BABYSTEP;
   }
   else{
-    key_pause = 4;
-    printingItems.items[key_pause+1] = itemBabyStep;
+    printingItems.items[key_pause - 1].icon = ICON_BABYSTEP;
+    printingItems.items[key_pause - 1].label.index = LABEL_BABYSTEP;
   }
 
     printingItems.items[key_pause] = itemIsPause[isPause()];
@@ -419,20 +418,12 @@ void menuPrinting(void)
     switch(key_num)
     {
       case KEY_ICON_4:
-        if(get_Pre_Icon() != true){
-        setPrintPause(!isPause(),false);
-        resumeToPause(isPause());
-        }
+        infoMenu.menu[++infoMenu.cur] = menuBabyStep;
         break;
 
       case KEY_ICON_5:
-        if(get_Pre_Icon() == true){
-        setPrintPause(!isPause(),false);
-        resumeToPause(isPause());
-        }
-        else{
-        infoMenu.menu[++infoMenu.cur] = menuBabyStep;
-        }
+          setPrintPause(!isPause(), false);
+          resumeToPause(isPause());
         break;
 
       case KEY_ICON_6:
@@ -445,7 +436,6 @@ void menuPrinting(void)
         else
         {
           exitPrinting();
-
           infoMenu.cur--;
         }
         break;
