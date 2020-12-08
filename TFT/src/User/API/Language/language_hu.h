@@ -86,6 +86,8 @@
     #define STRING_RESUME                 "Folytatás"
     #define STRING_LOAD                   "Betöltés"
     #define STRING_UNLOAD                 "Kiadás"
+    #define STRING_LOAD_UNLOAD            "Betöltés/Kiadás"
+    #define STRING_LOAD_UNLOAD_SHORT      "Fil. Ki/Be"
     #define STRING_SLOW_SPEED             "Lassú"
     #define STRING_NORMAL_SPEED           "Normál"
     #define STRING_FAST_SPEED             "Gyors"
@@ -183,7 +185,7 @@
     #define STRING_EMERGENCYSTOP          "VészSTOP"
     #define STRING_TOUCH_TO_EXIT          "Érintsd meg a kilépéshez."
     #define STRING_MAINMENU               "Főmenü"
-    #define STRING_WAIT_TEMP_SHUT_DOWN    "Várd meg a fej\nvisszahűlését.%d℃" // Várj, míg a fej a megadott ℃ alá hűl.
+    #define STRING_WAIT_TEMP_SHUT_DOWN    "Várd meg a fej\nvisszahűlését.%d℃"
     #define STRING_FORCE_SHUT_DOWN        "Kényszerítés"
     #define STRING_SHUTTING_DOWN          "Leállítás..."
     #define STRING_PARAMETER_SETTING      "Tényezők"
@@ -277,5 +279,8 @@
     #define STRING_MESH_EDITOR            "Háló Szerkesztő"
     #define STRING_MESH_TUNER             "Háló Hangoló"
     #define STRING_CASE_LIGHT             "Gépház Világítás"
+    #define STRING_LOAD_STARTED           "A filament betöltése folyamatban van,\nnem lehetséges további művelet,\nmíg véget nem ér.\nKérlek várj!"
+    #define STRING_UNLOAD_STARTED         "A filament kiadása folyamatban van,\nnem lehetséges további művelet,\nmíg véget nem ér.\nKérlek várj!"
+    #define STRING_HEATERS_ON             "Néhány fűtőelem még üzemel.\nKikapcsolod a fűtőelemeket?"
 
 #endif
